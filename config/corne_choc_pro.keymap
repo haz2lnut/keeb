@@ -1,0 +1,92 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define HZ2LUT 0
+#define QWERTY 1
+#define LOWER  2
+#define RAISE  3
+#define ADJUST 4
+
+/ {
+   chosen {
+      zmk,physical-layout = &five_col_layout;
+   };
+};
+
+&sl {
+    release-after-ms = <500>;
+};
+
+&sk {
+    release-after-ms = <500>;
+};
+
+/ {
+   macros {
+lang: lang {
+          compatible = "zmk,behavior-macro-one-param";
+          wait-ms = <0>;
+          tap-ms = <0>;
+#binding-cells = <1>;
+          bindings =
+             <&macro_tap &kp LC(SPACE)>
+             , <&macro_param_1to1>
+             , <&macro_tap &to MACRO_PLACEHOLDER>;
+       };
+   };
+   keymap {
+      compatible = "zmk,keymap";
+
+      base_layer {
+         display-name = "HZ2LUT";
+         bindings = <
+            &kp Q &kp F &kp G &kp Y &mt LALT DLLR   &none   &none &mt RALT CARET &kp V &kp X &kp H &kp W
+            &kp A &kp S &kp T &kp E &mt LCMD J      &none   &none &mt RCMD Z     &kp N &kp I &kp R &kp C
+            &kp K &kp M &kp D &kp O &mt LCTRL GRAVE               &mt RCTRL AT   &kp P &kp U &kp L &kp B
+            &lang QWERTY &sl LOWER &sk LSHFT   &kp BSPC &lt RAISE SPACE &kp DEL
+            >;
+      };
+      qwerty_layer {
+         display-name = "QWERTY";
+         bindings = <
+            &kp Q &kp W &kp E &kp R &kp T &none   &none &kp Y &kp U &kp I &kp O &kp P
+            &kp A &kp S &kp D &kp F &kp G &none   &none &kp H &kp J &kp K &kp L &none
+            &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M &none &none &none
+            &lang HZ2LUT &sl LOWER &sk LSHFT   &kp BSPC &lt RAISE SPACE &kp DEL
+            >;
+      };
+      lower_layer {
+         display-name = "LOWER";
+         bindings = <
+            &kp LBKT &kp LBRC &kp RBRC  &kp RBKT &kp PRCNT &none   &none &kp BSLH  &kp PIPE &kp AMPS  &kp HASH  &kp SQT
+            &kp DOT  &kp LPAR &kp RPAR  &kp SEMI &kp EXCL  &none   &none &kp QMARK &kp ESC  &kp COMMA &kp UNDER &kp RET
+            &kp LT   &kp PLUS &kp MINUS &kp GT   &kp TILDE               &kp COLON &kp EQL  &kp FSLH  &kp STAR  &kp DQT
+            &trans &trans &trans   &kp GLOBE &lt ADJUST TAB &trans
+            >;
+      };
+      raise_layer {
+         display-name = "RAISE";
+         bindings = <
+            &kp MINUS &kp N7 &kp N8 &kp N9 &kp FSLH &none   &none &kp C_BRI_UP &kp HOME   &kp PG_UP    &kp PG_DN    &kp END
+            &kp PLUS  &kp N4 &kp N5 &kp N6 &kp STAR &none   &none &kp C_PP     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT
+            &kp DOT   &kp N1 &kp N2 &kp N3 &kp EQL                &kp C_BRI_DN &kp C_PREV &kp C_VOL_UP &kp C_VOL_DN &kp C_NEXT
+            &kp LC(SPACE) &lt ADJUST N0 &kp LC(B)   &trans &trans &trans
+            >;
+      };
+      adjust_layer {
+         display-name = "ADJUST";
+         bindings = <
+            &kp F12 &kp F7 &kp F8 &kp F9 &kp F15 &none   &none &kp INS    &trans       &trans       &trans       &trans
+            &kp F11 &kp F4 &kp F5 &kp F6 &kp F14 &none   &none &kp CAPS   &trans       &trans       &trans       &trans
+            &kp F10 &kp F1 &kp F2 &kp F3 &kp F13               &bt BT_CLR &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0
+            &trans &trans &trans   &trans &trans &trans
+            >;
+   };
+};
