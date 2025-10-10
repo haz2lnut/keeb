@@ -88,5 +88,6 @@ lang: lang {
             &kp F10 &kp F1 &kp F2 &kp F3 &kp F13               &bt BT_CLR &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0
             &trans &trans &trans   &trans &trans &trans
             >;
+      };
    };
 };
