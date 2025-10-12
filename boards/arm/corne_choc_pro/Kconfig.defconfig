@@ -17,7 +17,7 @@ config BOARD
     default "corne_choc_pro"
 
 config ZMK_SPLIT
-    default y
+    default n
 
 if USB
 
