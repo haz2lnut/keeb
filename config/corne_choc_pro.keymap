@@ -9,10 +9,14 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define HZ2LUT 0
-#define QWERTY 1
-#define LOWER  2
-#define RAISE  3
-#define ADJUST 4
+#define HZ3LUT 1
+#define QWER1  2
+#define QWER2  3
+#define ARROWS 4
+#define NUMPAD 5
+#define FNPAD  6
+#define SYMLOW 7
+#define SYMRAI 8
 
 / {
    chosen {
@@ -41,52 +45,151 @@ lang: lang {
              , <&macro_tap &to MACRO_PLACEHOLDER>;
        };
    };
+   combos {
+      compatible = "zmk,combos";
+      combo_caps {
+         timeout-ms = <50>;
+         key-positions = <1 2>;
+         bindings = <&kp CAPS>;
+         layers = <5>;
+      };
+      combo_ins {
+         timeout-ms = <50>;
+         key-positions = <2 3>;
+         bindings = <&kp INS>;
+         layers = <5>;
+      };
+      combo_bt_clr {
+         timeout-ms = <50>;
+         key-positions = <14 15>;
+         bindings = <&bt BT_CLR>;
+         layers = <5>;
+      };
+      combo_bt_0 {
+         timeout-ms = <50>;
+         key-positions = <24 25>;
+         bindings = <&bt BT_SEL 0>;
+         layers = <5>;
+      };
+      combo_bt_1 {
+         timeout-ms = <50>;
+         key-positions = <25 26>;
+         bindings = <&bt BT_SEL 1>;
+         layers = <5>;
+      };
+      combo_bt_2 {
+         timeout-ms = <50>;
+         key-positions = <26 27>;
+         bindings = <&bt BT_SEL 2>;
+         layers = <5>;
+      };
+      combo_lbkt {
+         timeout-ms = <50>;
+         key-positions = <0 1>;
+         bindings = <&kp LBKT>;
+         layers = <7>;
+      };
+      combo_rbkt {
+         timeout-ms = <50>;
+         key-positions = <3 4>;
+         bindings = <&kp RBKT>;
+         layers = <7>;
+      };
+      combo_caret {
+         timeout-ms = <50>;
+         key-positions = <24 25>;
+         bindings = <&kp CARET>;
+         layers = <7>;
+      };
+      combo_dllr {
+         timeout-ms = <50>;
+         key-positions = <27 28>;
+         bindings = <&kp DLLR>;
+         layers = <7>;
+      };
+   };
    keymap {
       compatible = "zmk,keymap";
 
-      base_layer {
+      hz2lut_layer {
          display-name = "HZ2LUT";
          bindings = <
-            &kp Q &kp F &kp G &kp Y &mt LALT DLLR   &none   &none &mt RALT CARET &kp V &kp X &kp H &kp W
-            &kp A &kp S &kp T &kp E &mt LCMD J      &none   &none &mt RCMD Z     &kp N &kp I &kp R &kp C
-            &kp K &kp M &kp D &kp O &mt LCTRL GRAVE               &mt RCTRL AT   &kp P &kp U &kp L &kp B
-            &kp BSPC &kp SPACE &sl LOWER   &sk LSHFT &sl RAISE &lang QWERTY
+            &sk LSHFT &kp D &kp O &kp F &kp Q &none &none &none &none &none &none &none
+            &kp R     &kp E &kp T &kp I &kp H &none &none &none &none &none &none &none
+            &kp SPACE &kp P &kp M &kp C &kp Y             &none &none &none &none &none
+            &sl NUMPAD &sl HZ3LUT &sl SYMLOW &none &none &none
             >;
       };
-      qwerty_layer {
-         display-name = "QWERTY";
+      hz3lut_layer {
+         display-name = "HZ3LUT";
          bindings = <
-            &kp Q &kp W &kp E &kp R &kp T &none   &none &kp Y &kp U &kp I &kp O &kp P
-            &kp A &kp S &kp D &kp F &kp G &none   &none &kp H &kp J &kp K &kp L &none
-            &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M &none &none &none
-            &kp BSPC &kp SPACE &sl LOWER   &sk LSHFT &sl RAISE &lang HZ2LUT
+            &caps_word &kp B &kp G &kp X &kp J &none &none &none &none &none &none &none
+            &kp L      &kp N &kp A &kp S &kp W &none &none &none &none &none &none &none
+            &kp RET    &kp K &kp V &kp U &kp Z             &none &none &none &none &none
+            &kp LC(SPACE) &mo ARROWS &lang QWER1 &none &none &none
             >;
       };
-      lower_layer {
-         display-name = "LOWER";
+      qwer1_layer {
+         display-name = "QWER1";
          bindings = <
-            &kp HOME   &kp PG_DN    &kp PG_UP    &kp END    &kp C_BRI_UP &none   &none &kp FSLH &kp N7 &kp N8 &kp N9 &kp MINUS
-            &kp LEFT   &kp DOWN     &kp UP       &kp RIGHT  &kp C_PP     &none   &none &kp STAR &kp N4 &kp N5 &kp N6 &kp PLUS
-            &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &kp C_BRI_DN               &kp DOT  &kp N1 &kp N2 &kp N3 &kp N0
-            &trans &trans &trans   &kp LC(B) &mo ADJUST &kp LC(SPACE)
+            &sk LSHFT &kp Q &kp W &kp E &kp R &none &none &none &none &none &none &none
+            &kp A     &kp S &kp D &kp F &kp G &none &none &none &none &none &none &none
+            &kp SPACE &kp Z &kp X &kp C &kp V             &none &none &none &none &none
+            &sl NUMPAD &sl QWER2 &sl SYMLOW &none &none &none
             >;
       };
-      raise_layer {
-         display-name = "RAISE";
+      qwer2_layer {
+         display-name = "QWER2";
          bindings = <
-            &kp LBKT &kp LBRC &kp RBRC  &kp RBKT &kp PRCNT &none   &none &kp BSLH  &kp PIPE &kp AMPS  &kp HASH  &kp SQT
-            &kp DOT  &kp LPAR &kp RPAR  &kp SEMI &kp EXCL  &none   &none &kp QMARK &kp ESC  &kp COMMA &kp UNDER &kp RET
-            &kp LT   &kp PLUS &kp MINUS &kp GT   &kp TILDE               &kp COLON &kp EQL  &kp FSLH  &kp STAR  &kp DQT
-            &kp DEL &kp TAB &mo ADJUST   &trans &trans &trans
+            &caps_word &kp I &kp U &kp Y &kp T &none &none &none &none &none &none &none
+            &kp O      &kp L &kp K &kp J &kp H &none &none &none &none &none &none &none
+            &kp RET    &kp P &kp M &kp N &kp B             &none &none &none &none &none
+            &kp LC(SPACE) &mo ARROWS &lang HZ2LUT &none &none &none
             >;
       };
-      adjust_layer {
-         display-name = "ADJUST";
+      arrows_layer {
+         display-name = "ARROWS";
          bindings = <
-            &kp INS    &trans       &trans       &trans       &trans      &none   &none &kp F15 &kp F7 &kp F8 &kp F9 &kp F12
-            &kp CAPS   &trans       &trans       &trans       &trans      &none   &none &kp F14 &kp F4 &kp F5 &kp F6 &kp F11
-            &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3              &kp F13 &kp F1 &kp F2 &kp F3 &kp F10
-            &trans &trans &trans   &trans &trans &trans
+            &kp HOME   &kp PG_DN    &kp PG_UP    &kp END    &kp C_BRI_UP &none &none &none &none &none &none &none
+            &kp LEFT   &kp DOWN     &kp UP       &kp RIGHT  &kp C_PP     &none &none &none &none &none &none &none
+            &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &kp C_BRI_DN             &none &none &none &none &none
+            &none &none &none &none &none &none
+            >;
+      };
+      numpad_layer {
+         display-name = "NUMPAD";
+         bindings = <
+            &kp DEL  &kp N6 &kp N8 &kp N9 &sk LALT  &none &none &none &none &none &none &none
+            &kp BSPC &kp N4 &kp N5 &kp N6 &sk LCMD  &none &none &none &none &none &none &none
+            &kp N0   &kp N1 &kp N2 &kp N3 &sk LCTRL                &none &none &none &none &none
+            &mo FNPAD &none &none &none &none &none
+            >;
+      };
+      fnpad_layer {
+         display-name = "FNPAD";
+         bindings = <
+            &kp F12 &kp F7 &kp F8 &kp F9 &kp F15 &none &none &none &none &none &none &none
+            &kp F11 &kp F4 &kp F5 &kp F6 &kp F14 &none &none &none &none &none &none &none
+            &kp F10 &kp F1 &kp F2 &kp F3 &kp F13             &none &none &none &none &none
+            &none &none &none &none &none &none
+            >;
+      };
+      symlow_layer {
+         display-name = "SYMLOW";
+         bindings = <
+            &kp LT    &kp PLUS &kp MINUS &kp GT    &kp HASH &none &none &none &none &none &none &none
+            &kp LPRN  &kp RPRN &kp SEMI  &kp ESC   &kp DOT  &none &none &none &none &none &none &none
+            &kp UNDER &kp EQL  &kp DQT   &kp COMMA &kp EXCL             &none &none &none &none &none
+            &none &none &mo SYMRAI &none &none &none
+            >;
+      };
+      symrai_layer {
+         display-name = "SYMRAI";
+         bindings = <
+            &kp AT   &kp STAR  &kp FSLH  &kp TILDE &kp GRAVE &none &none &none &none &none &none &none
+            &kp LBRC &kp RBRC  &kp COLON &kp AMPS  &kp PIPE  &none &none &none &none &none &none &none
+            &kp BSLH &kp PRCNT &kp SQT   &kp LC(B) &kp QMARK             &none &none &none &none &none
+            &none &none &none &none &none &none
             >;
       };
    };
