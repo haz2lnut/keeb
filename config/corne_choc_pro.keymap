@@ -114,27 +114,27 @@ lang: lang {
       hz2lut_layer {
          display-name = "HZ2LUT";
          bindings = <
-            &sk LSHFT &kp D &kp O &kp F &kp Q &none &none &none &none &none &none &none
-            &kp R     &kp E &kp T &kp I &kp H &none &none &none &none &none &none &none
-            &kp SPACE &kp P &kp M &kp C &kp Y             &none &none &none &none &none
+            &sk LSHFT &kp D &kp P &kp X &kp J &none &none &none &none &none &none &none
+            &kp A     &kp T &kp E &kp R &kp M &none &none &none &none &none &none &none
+            &kp SPACE &kp L &kp U &kp N &kp W             &none &none &none &none &none
             &sl NUMPAD &sl HZ3LUT &sl SYMLOW &none &none &none
             >;
       };
       hz3lut_layer {
          display-name = "HZ3LUT";
          bindings = <
-            &caps_word &kp B &kp G &kp X &kp J &none &none &none &none &none &none &none
-            &kp L      &kp N &kp A &kp S &kp W &none &none &none &none &none &none &none
-            &kp RET    &kp K &kp V &kp U &kp Z             &none &none &none &none &none
+            &caps_word &kp G &kp X &kp V &kp J &none &none &none &none &none &none &none
+            &kp O      &kp C &kp I &kp S &kp K &none &none &none &none &none &none &none
+            &kp RET    &kp B &kp H &kp M &kp Q             &none &none &none &none &none
             &kp LC(SPACE) &mo ARROWS &lang QWER1 &none &none &none
             >;
       };
       qwer1_layer {
          display-name = "QWER1";
          bindings = <
-            &sk LSHFT &kp Q &kp W &kp E &kp R &none &none &none &none &none &none &none
-            &kp A     &kp S &kp D &kp F &kp G &none &none &none &none &none &none &none
-            &kp SPACE &kp Z &kp X &kp C &kp V             &none &none &none &none &none
+            &sk LSHFT &kp D &kp P &kp F &kp Z &none &none &none &none &none &none &none
+            &kp A     &kp T &kp E &kp R &kp Y &none &none &none &none &none &none &none
+            &kp SPACE &kp L &kp U &kp N &kp W             &none &none &none &none &none
             &sl NUMPAD &sl QWER2 &sl SYMLOW &none &none &none
             >;
       };
@@ -177,18 +177,18 @@ lang: lang {
       symlow_layer {
          display-name = "SYMLOW";
          bindings = <
-            &kp LT    &kp PLUS &kp MINUS &kp GT    &kp HASH &none &none &none &none &none &none &none
-            &kp LPRN  &kp RPRN &kp SEMI  &kp ESC   &kp DOT  &none &none &none &none &none &none &none
-            &kp UNDER &kp EQL  &kp DQT   &kp COMMA &kp EXCL             &none &none &none &none &none
+            &kp LT    &kp PLUS &kp MINUS &kp GT  &kp HASH &none &none &none &none &none &none &none
+            &kp LPRN  &kp RPRN &kp SEMI  &kp ESC &kp DOT  &none &none &none &none &none &none &none
+            &kp UNDER &kp DQT  &kp COMMA &kp EQL &kp EXCL             &none &none &none &none &none
             &none &none &mo SYMRAI &none &none &none
             >;
       };
       symrai_layer {
          display-name = "SYMRAI";
          bindings = <
-            &kp AT   &kp STAR  &kp FSLH  &kp TILDE &kp GRAVE &none &none &none &none &none &none &none
-            &kp LBRC &kp RBRC  &kp COLON &kp AMPS  &kp PIPE  &none &none &none &none &none &none &none
-            &kp BSLH &kp PRCNT &kp SQT   &kp LC(B) &kp QMARK             &none &none &none &none &none
+            &kp AT   &kp STAR &kp FSLH  &kp TILDE &kp GRAVE &none &none &none &none &none &none &none
+            &kp LBRC &kp RBRC &kp COLON &kp AMPS  &kp PIPE  &none &none &none &none &none &none &none
+            &kp BSLH &kp SQT  &kp LC(B) &kp PRCNT &kp QMARK             &none &none &none &none &none
             &none &none &none &none &none &none
             >;
       };
